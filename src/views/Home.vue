@@ -1,22 +1,22 @@
 <template>
   <div id="home">
-    <Navbar />
+    <!-- <Navbar /> -->
     <Login />
-    <Player />
+    <!-- <Player /> -->
   </div>
 </template>
 
 <script>
   import Login from '@/components/Login.vue';
-  import Player from '@/components/Player.vue';
-  import Navbar from '@/components/Navbar.vue';
+  // import Player from '@/components/Player.vue';
+  // import Navbar from '@/components/Navbar.vue';
 
   export default {
     name: 'home',
     components: {
-      Login,
-      Player,
-      Navbar
+      Login
+      // Player
+      // Navbar
     }
   };
 </script>

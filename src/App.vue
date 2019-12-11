@@ -1,19 +1,25 @@
 <template>
   <v-app>
     <v-content>
+      <Navbar />
       <Home />
+      <Player />
     </v-content>
   </v-app>
 </template>
 
 <script>
-  import Home from './views/Home.vue';
+  import Home from '@/views/Home.vue';
+  import Navbar from '@/components/Navbar.vue';
+  import Player from '@/components/Player.vue';
 
   export default {
     name: 'App',
 
     components: {
-      Home
+      Home,
+      Navbar,
+      Player
     },
 
     data: () => ({})
