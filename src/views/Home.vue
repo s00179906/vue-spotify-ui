@@ -1,5 +1,6 @@
 <template>
   <div id="home">
+    <Navbar />
     <Login />
     <Player />
   </div>
@@ -8,12 +9,14 @@
 <script>
   import Login from '@/components/Login.vue';
   import Player from '@/components/Player.vue';
+  import Navbar from '@/components/Navbar.vue';
 
   export default {
     name: 'home',
     components: {
       Login,
-      Player
+      Player,
+      Navbar
     }
   };
 </script>

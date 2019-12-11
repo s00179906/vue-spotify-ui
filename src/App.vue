@@ -26,5 +26,8 @@
     background-color: #121212;
     text-decoration: none;
     font-family: 'Ubuntu', 'Montserrat';
+    padding: 0;
+    margin: 0;
+    color: #fff;
   }
 </style>

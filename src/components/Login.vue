@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <img src="@/assets/Spotify_logo_with_text.svg" />
-
+  <div id="login">
     <v-btn
       rounded
       large
@@ -42,4 +40,13 @@
   };
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+  #login {
+    background-color: #0b0b0b;
+    height: 12%;
+    width: 85%;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+</style>

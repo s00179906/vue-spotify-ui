@@ -10,7 +10,7 @@
   #player {
     background-color: #282828;
     width: 100%;
-    height: 90px;
+    height: 12%;
     position: absolute;
     bottom: 0;
   }
