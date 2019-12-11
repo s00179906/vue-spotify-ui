@@ -1,5 +1,9 @@
 <template>
-  <div id="player"></div>
+  <div class="player d-flex justify-center">
+    <div class="a">a</div>
+    <div class="b">b</div>
+    <div class="c">c</div>
+  </div>
 </template>
 
 <script>
@@ -7,7 +11,7 @@
 </script>
 
 <style scoped lang="scss">
-  #player {
+  .player {
     background-color: #282828;
     width: 100%;
     height: 12%;
