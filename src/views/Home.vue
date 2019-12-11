@@ -1,18 +1,25 @@
 <template>
-  <div>
+  <div id="home">
     <Login />
+    <Player />
   </div>
 </template>
 
 <script>
   import Login from '@/components/Login.vue';
+  import Player from '@/components/Player.vue';
 
   export default {
     name: 'home',
     components: {
-      Login
+      Login,
+      Player
     }
   };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+  #home {
+    height: 100%;
+  }
+</style>
