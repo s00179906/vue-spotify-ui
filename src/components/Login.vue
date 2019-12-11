@@ -1,12 +1,38 @@
 <template>
   <div id="login">
-    <v-btn
-      rounded
-      large
-      light
-      href="https://auth-spotify-api.herokuapp.com/login"
-      >Login</v-btn
+    <div
+      class="btn-container 
+             d-flex 
+             justify-space-between 
+             align-center
+             ma-3"
     >
+      <div>
+        <v-btn class="ma-2 btn-forward" fab dark small>
+          <v-icon dark>mdi-chevron-left</v-icon>
+        </v-btn>
+
+        <v-btn class="ma-2 btn-back" fab dark small>
+          <v-icon dark>mdi-chevron-right</v-icon>
+        </v-btn>
+      </div>
+      <div>
+        <v-btn text dark class="btn-signup font-weight-bold ma-2"
+          >SIGN UP</v-btn
+        >
+        <v-btn
+          class="btn-login font-weight-bold"
+          rounded
+          large
+          light
+          color="success"
+          width="130"
+          height="30"
+          href="https://auth-spotify-api.herokuapp.com/login"
+          >LOG IN</v-btn
+        >
+      </div>
+    </div>
   </div>
 </template>
 
