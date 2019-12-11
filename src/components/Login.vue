@@ -1,6 +1,14 @@
 <template>
   <div>
-    <a href="https://auth-spotify-api.herokuapp.com/login">Login</a>
+    <img src="@/assets/Spotify_logo_with_text.svg" />
+
+    <v-btn
+      rounded
+      large
+      light
+      href="https://auth-spotify-api.herokuapp.com/login"
+      >Login</v-btn
+    >
   </div>
 </template>
 

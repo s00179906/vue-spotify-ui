@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div>
     <Login />
   </div>
 </template>
@@ -14,3 +14,5 @@
     }
   };
 </script>
+
+<style lang="scss" scoped></style>

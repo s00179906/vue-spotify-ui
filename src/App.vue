@@ -1,18 +1,30 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Spotify</router-link>
-    </div>
-    <router-view />
-  </div>
+  <v-app>
+    <v-content>
+      <Home />
+    </v-content>
+  </v-app>
 </template>
 
-<style lang="scss">
+<script>
+  import Home from './views/Home.vue';
+
+  export default {
+    name: 'App',
+
+    components: {
+      Home
+    },
+
+    data: () => ({})
+  };
+</script>
+
+<style lang="scss" scoped>
   @import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
   * {
-    margin: 0;
-    padding: 0;
-    font-family: 'Ubuntu', 'Montserrat';
+    background-color: #121212;
     text-decoration: none;
+    font-family: 'Ubuntu', 'Montserrat';
   }
 </style>
