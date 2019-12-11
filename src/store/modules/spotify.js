@@ -17,18 +17,20 @@ const actions = {
       }
     });
   },
-  async login({ commit }) {
-    return await axios.get("https://auth-spotify-api.herokuapp.com/login").then(
-      res => console.log(res),
-      err => console.log(err)
-    );
-  },
   setToken() {
-    let tokenSliceStart = window.location.hash.slice(14);
-    let tokenSliceEnd = tokenSliceStart.slice(0, 178);
-    let access_token = tokenSliceEnd;
+    // @ Lenght of access_token is 178
+    const access_token = window.location.hash.slice(14, 192);
 
-    localStorage.setItem("access_token", access_token);
+    // @ Lenght of refresh_token is 131
+    const refresh_token = window.location.href.slice(-131);
+
+    // @ Tokens Object
+    const tokens = {
+      access_token: access_token,
+      refresh_token: refresh_token
+    };
+
+    localStorage.setItem("tokens", JSON.stringify(tokens));
   },
   async getUser({ commit }) {
     const user = await this.Query("me");

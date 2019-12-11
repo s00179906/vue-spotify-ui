@@ -12,14 +12,17 @@
     name: 'Login',
     props: {},
     methods: {
-      ...mapActions(['login', 'getUser', 'setToken']),
-      loginUser() {
-        this.login();
-      },
+      ...mapActions(['getUser', 'setToken']),
+
       async getToken() {
         const highlight = 'background: #444; color: orange';
-        const access_token = await localStorage.getItem('access_token');
+
+        const { access_token, refresh_token } = await JSON.parse(
+          localStorage.getItem('tokens')
+        );
+
         console.log('%c access_token is: ', highlight, access_token);
+        console.log('%c refresh_token is: ', highlight, refresh_token);
       }
     },
     computed: mapGetters([]),
