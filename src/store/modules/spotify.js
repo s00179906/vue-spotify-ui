@@ -33,11 +33,7 @@ const actions = {
     localStorage.setItem("tokens", JSON.stringify(tokens));
   },
   async getUser({ commit }) {
-    const user = await this.Query("me");
-
-    console.log("User feteched from api-->", user);
-
-    return user;
+    return await this.Query("me");
   }
 };
 
