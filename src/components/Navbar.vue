@@ -55,7 +55,7 @@
       </v-list>
     </v-card> -->
 
-  <v-navigation-drawer permanent app color="primaryDark" tile>
+  <v-navigation-drawer permanent app color="primaryDark" tile width="220">
     <v-list shaped>
       <v-subheader
         ><div class="spotify-logo mt-2">
