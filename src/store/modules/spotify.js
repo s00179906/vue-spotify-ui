@@ -35,7 +35,6 @@ const actions = {
 
     commit("setUser", user.data);
     commit("setUserLoggedIn", true);
-    console.log(state.user);
   },
   async getUserLibraryTracks({ commit }) {
     const { access_token } = await JSON.parse(localStorage.getItem("tokens"));
@@ -50,8 +49,8 @@ const actions = {
       }
     );
 
-    commit("setUserLibraryTracks", tracks.items);
-    console.log(state.userLibraryTracks);
+    commit("setUserLibraryTracks", tracks.data.items);
+    console.log(tracks.data.items);
   }
 };
 
