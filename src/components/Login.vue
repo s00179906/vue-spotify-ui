@@ -11,8 +11,15 @@
 
       <v-spacer></v-spacer>
 
-      <v-btn text dark class="btn-signup font-weight-bold ma-2">SIGN UP</v-btn>
       <v-btn
+        v-if="!userLoggedIn"
+        text
+        dark
+        class="btn-signup font-weight-bold ma-2"
+        >SIGN UP</v-btn
+      >
+      <v-btn
+        v-if="!userLoggedIn"
         class="btn-login font-weight-bold"
         rounded
         large
@@ -42,7 +49,7 @@
 </template>
 
 <script>
-  import { mapGetters, mapActions } from 'vuex';
+  import { mapGetters, mapActions, mapState } from 'vuex';
   import router from 'vue-router';
 
   export default {
@@ -51,9 +58,17 @@
     methods: {
       ...mapActions(['setToken'])
     },
-    computed: mapGetters([]),
+    computed: {
+      ...mapGetters([]),
+      ...mapState({
+        userLoggedIn: state => state.spotify.userLoggedIn
+      })
+    },
     created() {
       this.setToken();
+    },
+    data: () => {
+      return {};
     }
   };
 </script>

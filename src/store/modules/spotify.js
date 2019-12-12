@@ -2,7 +2,7 @@ import axios from "axios";
 
 const state = {
   user: null,
-  name: "ibrah"
+  userLoggedIn: false
 };
 
 const getters = {
@@ -23,7 +23,7 @@ const actions = {
   },
   async getUser({ commit }) {
     const { access_token } = await JSON.parse(localStorage.getItem("tokens"));
-    const highlight = "background: #444; color: orange";
+
     const user = await axios.get("https://api.spotify.com/v1/me", {
       headers: {
         "Content-Type": "application/json",
@@ -31,14 +31,14 @@ const actions = {
       }
     });
 
-    console.log("b4 commit", state.user);
     commit("setUser", user.data);
-    console.log("after commit", state.user);
+    commit("setUserLoggedIn", true);
   }
 };
 
 const mutations = {
-  setUser: (state, user) => (state.user = user)
+  setUser: (state, user) => (state.user = user),
+  setUserLoggedIn: (state, value) => (state.userLoggedIn = value)
 };
 
 export default {
