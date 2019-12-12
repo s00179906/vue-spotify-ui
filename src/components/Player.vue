@@ -1,21 +1,18 @@
 <template>
-  <div class="player d-flex justify-center">
-    <div class="a">a</div>
-    <div class="b">b</div>
-    <div class="c">c</div>
-  </div>
+  <v-footer class="d-flex justify-center" color="primaryGray" fixed="true" app>
+    <v-row>
+      <v-col class="text-center" sm="3">1</v-col>
+      <v-col class="text-center" sm="6">
+        <v-row dense><v-col>top</v-col></v-row>
+        <v-row dense><v-col>bottom</v-col></v-row>
+      </v-col>
+      <v-col class="text-center" sm="3">3</v-col>
+    </v-row>
+  </v-footer>
 </template>
 
 <script>
   export default {};
 </script>
 
-<style scoped lang="scss">
-  .player {
-    background-color: #282828;
-    width: 100%;
-    height: 12%;
-    position: absolute;
-    bottom: 0;
-  }
-</style>
+<style scoped lang="scss"></style>

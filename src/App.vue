@@ -1,39 +1,38 @@
 <template>
-  <v-app>
+  <v-app dark>
     <v-content>
+      <Login />
       <Navbar />
-      <Home />
+      <router-view />
       <Player />
     </v-content>
   </v-app>
 </template>
 
 <script>
-  import Home from '@/views/Home.vue';
   import Navbar from '@/components/Navbar.vue';
   import Player from '@/components/Player.vue';
+  import Login from '@/components/Login.vue';
 
   export default {
     name: 'App',
 
     components: {
-      Home,
       Navbar,
-      Player
+      Player,
+      Login
     },
 
     data: () => ({})
   };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   @import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
   * {
-    background-color: #121212;
-    text-decoration: none;
+    /* background-color: #121212; */
     font-family: 'Ubuntu', 'Montserrat';
     padding: 0;
     margin: 0;
-    color: #fff;
   }
 </style>

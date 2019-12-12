@@ -1,30 +1,19 @@
 import axios from "axios";
 
-const state = {};
+const state = {
+  user: null,
+  name: "ibrah"
+};
 
-const getters = {};
+const getters = {
+  user: state => state.user
+};
 
 const actions = {
-  async Query(query) {
-    const url = `https://api.spotify.com/v1/${query}`;
-
-    const access_token = localStorage.getItem("spotify-token");
-
-    return await axios.get(url, {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${access_token}`
-      }
-    });
-  },
   setToken() {
-    // @ Lenght of access_token is 178
     const access_token = window.location.hash.slice(14, 192);
-
-    // @ Lenght of refresh_token is 131
     const refresh_token = window.location.href.slice(-131);
 
-    // @ Tokens Object
     const tokens = {
       access_token: access_token,
       refresh_token: refresh_token
@@ -33,15 +22,28 @@ const actions = {
     localStorage.setItem("tokens", JSON.stringify(tokens));
   },
   async getUser({ commit }) {
-    return await this.Query("me");
+    const { access_token } = await JSON.parse(localStorage.getItem("tokens"));
+    const highlight = "background: #444; color: orange";
+    const user = await axios.get("https://api.spotify.com/v1/me", {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${access_token}`
+      }
+    });
+
+    console.log("b4 commit", state.user);
+    commit("setUser", user.data);
+    console.log("after commit", state.user);
   }
 };
 
-const muatations = {};
+const mutations = {
+  setUser: (state, user) => (state.user = user)
+};
 
 export default {
   state,
   getters,
   actions,
-  muatations
+  mutations
 };

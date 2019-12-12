@@ -1,28 +1,31 @@
 <template>
   <div id="home">
-    <!-- <Navbar /> -->
-    <Login />
-    <!-- <Player /> -->
+    <h2>{{ user.email }}</h2>
   </div>
 </template>
 
 <script>
-  import Login from '@/components/Login.vue';
-  // import Player from '@/components/Player.vue';
-  // import Navbar from '@/components/Navbar.vue';
+  import { mapGetters, mapActions, mapState } from 'vuex';
+  import router from 'vue-router';
 
   export default {
     name: 'home',
-    components: {
-      Login
-      // Player
-      // Navbar
+    components: {},
+    methods: {
+      ...mapActions(['getUser'])
+    },
+    computed: {
+      ...mapGetters(['user']),
+      ...mapState([''])
+    },
+    created() {
+      this.getUser();
     }
   };
 </script>
 
 <style lang="scss" scoped>
   #home {
-    height: 100%;
+    background-color: #282828;
   }
 </style>
