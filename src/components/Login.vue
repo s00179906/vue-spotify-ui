@@ -31,6 +31,27 @@
         >LOG IN</v-btn
       >
 
+      <v-btn
+        v-if="userLoggedIn"
+        class="btn-login font-weight-bold mr-8"
+        rounded
+        large
+        light
+        width="170"
+        height="35"
+        >UPGRADE</v-btn
+      >
+
+      <v-btn
+        v-if="userLoggedIn"
+        class="btn-login font-weight-bold"
+        rounded
+        large
+        height="35"
+      >
+        {{ userName }}
+      </v-btn>
+
       <v-menu left bottom>
         <template v-slot:activator="{ on }">
           <v-btn icon v-on="on">
@@ -59,7 +80,7 @@
       ...mapActions(['setToken'])
     },
     computed: {
-      ...mapGetters([]),
+      ...mapGetters(['userName']),
       ...mapState({
         userLoggedIn: state => state.spotify.userLoggedIn
       })

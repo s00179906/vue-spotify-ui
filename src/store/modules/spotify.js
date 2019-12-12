@@ -6,7 +6,8 @@ const state = {
 };
 
 const getters = {
-  user: state => state.user
+  user: state => state.user,
+  userName: state => state.user.display_name
 };
 
 const actions = {
@@ -33,6 +34,7 @@ const actions = {
 
     commit("setUser", user.data);
     commit("setUserLoggedIn", true);
+    console.log(state.user);
   }
 };
 
