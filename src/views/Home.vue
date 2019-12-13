@@ -1,31 +1,31 @@
 <template>
   <div id="home">
-    <h2>{{ user.email }}</h2>
+    <h2 v-if="user">{{ user.email }}</h2>
   </div>
 </template>
 
 <script>
-  import { mapGetters, mapActions, mapState } from 'vuex';
-  import router from 'vue-router';
+import { mapGetters, mapActions, mapState } from 'vuex';
+import router from 'vue-router';
 
-  export default {
-    name: 'home',
-    components: {},
-    methods: {
-      ...mapActions(['getUser'])
-    },
-    computed: {
-      ...mapGetters(['user']),
-      ...mapState([''])
-    },
-    created() {
-      this.getUser();
-    }
-  };
+export default {
+  name: 'home',
+  components: {},
+  methods: {
+    ...mapActions(['getUser'])
+  },
+  computed: {
+    ...mapGetters(['user']),
+    ...mapState([''])
+  },
+  created() {
+    this.getUser();
+  }
+};
 </script>
 
 <style lang="scss" scoped>
-  #home {
-    background-color: #282828;
-  }
+#home {
+  background-color: #282828;
+}
 </style>

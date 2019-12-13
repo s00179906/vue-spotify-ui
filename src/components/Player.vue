@@ -1,5 +1,5 @@
 <template>
-  <v-footer class="d-flex justify-center" color="primaryGray" fixed="true" app>
+  <v-footer class="d-flex justify-center" color="primaryGray" fixed app>
     <v-row>
       <v-col class="text-center" sm="3">1</v-col>
       <v-col class="text-center" sm="6">

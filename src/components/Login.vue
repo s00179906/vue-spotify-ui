@@ -70,28 +70,29 @@
 </template>
 
 <script>
-  import { mapGetters, mapActions, mapState } from 'vuex';
-  import router from 'vue-router';
+import { mapGetters, mapActions, mapState } from 'vuex';
+import router from 'vue-router';
 
-  export default {
-    name: 'Login',
-    props: {},
-    methods: {
-      ...mapActions(['setToken'])
-    },
-    computed: {
-      ...mapGetters(['userName']),
-      ...mapState({
-        userLoggedIn: state => state.spotify.userLoggedIn
-      })
-    },
-    created() {
-      this.setToken();
-    },
-    data: () => {
-      return {};
-    }
-  };
+export default {
+  name: 'Login',
+  props: {},
+  methods: {
+    ...mapActions(['setToken', 'setUserLoggedInStatus'])
+  },
+  computed: {
+    ...mapGetters(['userName']),
+    ...mapState({
+      userLoggedIn: state => state.spotify.userLoggedIn
+    })
+  },
+  async created() {
+    await this.setUserLoggedInStatus();
+    await this.setToken();
+  },
+  data: () => {
+    return {};
+  }
+};
 </script>
 
 <style scoped lang="scss"></style>
