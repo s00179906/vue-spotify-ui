@@ -38,6 +38,9 @@ const actions = {
       localStorage.setItem('tokens', JSON.stringify(tokens));
     }
   },
+  setUserLoggedIn({ commit }) {
+    commit('setUserLoggedIn_m', true);
+  },
   async getAuthUser({ commit }) {
     const { access_token } = await JSON.parse(localStorage.getItem('tokens'));
 
@@ -72,7 +75,7 @@ const actions = {
 
 const mutations = {
   setAuthUser: (state, user) => (state.user = user),
-  setUserLoggedIn: (state, value) => (state.userLoggedIn = value),
+  setUserLoggedIn_m: (state, value) => (state.userLoggedIn = value),
   setUserLibraryTracks: (state, tracks) => (state.userLibraryTracks = tracks)
 };
 

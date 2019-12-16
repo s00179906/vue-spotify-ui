@@ -24,11 +24,14 @@ export default {
     Login
   },
   methods: {
-    ...mapActions(['setTokens'])
+    ...mapActions(['setTokens', 'setUserLoggedIn'])
   },
   created() {
     localStorage.setItem('userIsLogginIn', false);
-    if (this.userLoggedIn) this.setTokens();
+    if (this.userLoggedIn) {
+      this.setTokens();
+      this.setUserLoggedIn();
+    }
   },
   data: () => {
     return {

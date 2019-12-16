@@ -18,6 +18,7 @@
       width="130"
       height="30"
       @click="login"
+      v-if="!userLoggedIn"
       >LOG IN</v-btn
     >
 
