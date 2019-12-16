@@ -19,9 +19,7 @@ export default {
     ...mapState([''])
   },
   created() {
-    // this.getAuthUser()
-    //   .then(res => console.log(res))
-    //   .catch(error => console.log(error));
+    this.getAuthUser();
   }
 };
 </script>

@@ -45,12 +45,16 @@ const actions = {
     const { access_token } = await JSON.parse(localStorage.getItem('tokens'));
 
     if (access_token) {
-      const user = await axios.get('https://api.spotify.com/v1/me', {
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${access_token}`
-        }
-      });
+      const user = await axios
+        .get('https://api.spotify.com/v1/me', {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${access_token}`
+          }
+        })
+        .then(res => console.log(res))
+        .catch(error => console.log(error));
+
       commit('setAuthUser', user.data);
     }
   },

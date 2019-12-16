@@ -22,7 +22,26 @@
       >LOG IN</v-btn
     >
 
-    <!-- <v-btn class="btn-login font-weight-bold" rounded large height="35">
+    <v-btn
+      class="btn-login font-weight-bold"
+      rounded
+      large
+      light
+      color="warning"
+      width="130"
+      height="30"
+      @click="logout"
+      v-if="userLoggedIn"
+      >LOG OUT</v-btn
+    >
+
+    <!-- <v-btn
+      class="btn-login font-weight-bold"
+      rounded
+      large
+      height="35"
+      v-if="userLoggedIn"
+    >
       {{ userName }}
     </v-btn> -->
 
@@ -53,6 +72,10 @@ export default {
     login() {
       window.location.href = 'https://auth-spotify-api.herokuapp.com/login';
       localStorage.setItem('userIsLogginIn', true);
+    },
+    logout() {
+      window.location.href = 'https://spotify.com/logout/';
+      localStorage.clear();
     }
   },
   computed: {
