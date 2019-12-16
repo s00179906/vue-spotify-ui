@@ -10,29 +10,39 @@
 </template>
 
 <script>
-  import Navbar from '@/components/Navbar.vue';
-  import Player from '@/components/Player.vue';
-  import Login from '@/components/Login.vue';
+import Navbar from '@/components/Navbar.vue';
+import Player from '@/components/Player.vue';
+import Login from '@/components/Login.vue';
+import { mapActions } from 'vuex';
 
-  export default {
-    name: 'App',
+export default {
+  name: 'App',
 
-    components: {
-      Navbar,
-      Player,
-      Login
-    },
-
-    data: () => ({})
-  };
+  components: {
+    Navbar,
+    Player,
+    Login
+  },
+  methods: {
+    ...mapActions(['setTokens'])
+  },
+  created() {
+    localStorage.setItem('userIsLogginIn', false);
+    if (this.userLoggedIn) this.setTokens();
+  },
+  data: () => {
+    return {
+      userLoggedIn: localStorage.getItem('userIsLogginIn')
+    };
+  }
+};
 </script>
 
 <style lang="scss">
-  @import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
-  * {
-    /* background-color: #121212; */
-    font-family: 'Ubuntu', 'Montserrat';
-    padding: 0;
-    margin: 0;
-  }
+@import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
+* {
+  font-family: 'Ubuntu', 'Montserrat';
+  padding: 0;
+  margin: 0;
+}
 </style>

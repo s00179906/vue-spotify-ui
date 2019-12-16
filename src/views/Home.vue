@@ -1,6 +1,6 @@
 <template>
   <div id="home">
-    <h2 v-if="user">{{ user.email }}</h2>
+    <!-- <h2 v-if="user">{{ user.email }}</h2> -->
   </div>
 </template>
 
@@ -12,20 +12,23 @@ export default {
   name: 'home',
   components: {},
   methods: {
-    ...mapActions(['getUser'])
+    ...mapActions(['getAuthUser'])
   },
   computed: {
     ...mapGetters(['user']),
     ...mapState([''])
   },
   created() {
-    this.getUser();
+    // this.getAuthUser()
+    //   .then(res => console.log(res))
+    //   .catch(error => console.log(error));
   }
 };
 </script>
 
 <style lang="scss" scoped>
 #home {
-  background-color: #282828;
+  background-color: #121212;
+  height: 100%;
 }
 </style>
