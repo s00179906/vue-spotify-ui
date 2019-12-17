@@ -1,7 +1,7 @@
 <template>
   <v-app dark>
     <v-content>
-      <Login />
+      <Header />
       <Navbar />
       <router-view />
       <Player />
@@ -12,7 +12,7 @@
 <script>
 import Navbar from '@/components/Navbar.vue';
 import Player from '@/components/Player.vue';
-import Login from '@/components/Login.vue';
+import Header from '@/components/Header.vue';
 import { mapActions } from 'vuex';
 
 export default {
@@ -21,7 +21,7 @@ export default {
   components: {
     Navbar,
     Player,
-    Login
+    Header
   },
   methods: {
     ...mapActions(['setTokens', 'setUserLoggedIn'])
@@ -42,13 +42,7 @@ export default {
 </script>
 
 <style lang="scss">
-/* @import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap'); */
-
 * {
-  /* font-family: 'Poppins', sans-serif; */
-
   padding: 0;
   margin: 0;
 }
