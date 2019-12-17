@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-btn class="d-lg-none" flat @click.stop="drawer = !drawer"></v-btn>
+    <v-btn class="d-lg-none" text @click.stop="drawer = !drawer"></v-btn>
     <v-navigation-drawer
       app
       color="primaryDark"
@@ -8,7 +8,7 @@
       :width="220"
       v-model="drawer"
     >
-      <v-list shaped>
+      <v-list>
         <v-subheader
           ><div class="spotify-logo mt-2">
             <v-img src="@/assets/Spotify_logo.svg" width="25%" />
@@ -52,14 +52,7 @@
             <p class="text-uppercase">Playlists</p>
           </v-subheader>
 
-          <v-list-item>
-            <v-list-item-icon>
-              <v-icon dark>mdi-plus-circle</v-icon>
-            </v-list-item-icon>
-            <v-list-item-content>
-              Create Playlist
-            </v-list-item-content>
-          </v-list-item>
+          <PlaylistModal />
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
@@ -67,11 +60,16 @@
 </template>
 
 <script>
+import PlaylistModal from '@/components/PlaylistModal.vue';
+
 export default {
-  components: {},
+  components: {
+    PlaylistModal
+  },
   data: () => ({
     drawer: true,
-    group: null
+    group: null,
+    dialog: false
   }),
 
   watch: {

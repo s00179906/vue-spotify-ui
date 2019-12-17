@@ -1,14 +1,19 @@
 <template>
   <v-app-bar color="secondaryDark" dark>
-    <v-btn class="ma-2 btn-forward" fab dark small>
+    <v-btn class="ma-2 d-md-none" fab dark small>
+      <v-icon dark>mdi-menu</v-icon>
+    </v-btn>
+
+    <v-btn @click="goBack" class="ma-2" fab dark small>
       <v-icon dark>mdi-chevron-left</v-icon>
     </v-btn>
 
-    <v-btn class="ma-2 btn-back" fab dark small>
+    <v-btn @click="goForward" class="ma-2" fab dark small>
       <v-icon dark>mdi-chevron-right</v-icon>
     </v-btn>
 
     <v-spacer></v-spacer>
+
     <v-btn
       class="btn-login font-weight-bold"
       rounded
@@ -76,6 +81,12 @@ export default {
     logout() {
       window.location.href = 'https://spotify.com/logout/';
       localStorage.clear();
+    },
+    goBack() {
+      this.$router.go(-1);
+    },
+    goForward() {
+      this.$router.go(1);
     }
   },
   computed: {
