@@ -48,13 +48,25 @@
             </v-list-item></router-link
           >
 
-          <v-subheader>
-            <p class="text-uppercase">Playlists</p>
-          </v-subheader>
+          <v-list-item-subtitle>
+            <p class="text-uppercase px-5 pb-0 mb-2 mt-3">Playlists</p>
+          </v-list-item-subtitle>
 
           <PlaylistModal />
         </v-list-item-group>
       </v-list>
+      <template v-slot:append>
+        <div>
+          <v-btn
+            @click="logout"
+            v-if="userLoggedIn"
+            block
+            color="warning"
+            class="font-weight-bold"
+            >Logout</v-btn
+          >
+        </div>
+      </template>
     </v-navigation-drawer>
   </div>
 </template>

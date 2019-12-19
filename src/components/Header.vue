@@ -4,13 +4,15 @@
       <v-icon dark>mdi-menu</v-icon>
     </v-btn>
 
-    <v-btn @click="goBack" class="ma-2" fab dark small>
+    <v-btn @click="goBack" class="ma-2  d-none d-md-flex" fab dark small>
       <v-icon dark>mdi-chevron-left</v-icon>
     </v-btn>
 
-    <v-btn @click="goForward" class="ma-2" fab dark small>
+    <v-btn @click="goForward" class="ma-2 d-none d-md-flex" fab dark small>
       <v-icon dark>mdi-chevron-right</v-icon>
     </v-btn>
+
+    <Search />
 
     <v-spacer></v-spacer>
 
@@ -28,7 +30,7 @@
     >
 
     <v-btn
-      class="btn-login font-weight-bold"
+      class="font-weight-bold d-none d-md-flex"
       rounded
       large
       light
@@ -67,19 +69,23 @@
 </template>
 
 <script>
+import Search from '@/components/Search.vue';
 import { mapGetters, mapActions, mapState } from 'vuex';
 import router from 'vue-router';
 
 export default {
   name: 'Login',
   props: {},
+  components: {
+    Search
+  },
   methods: {
     login() {
       window.location.href = 'https://auth-spotify-api.herokuapp.com/login';
       localStorage.setItem('userIsLogginIn', true);
     },
     logout() {
-      window.location.href = 'https://spotify.com/logout/';
+      window.location.href = 'https://auth-spotify-api.herokuapp.com/login';
       localStorage.clear();
     },
     goBack() {
