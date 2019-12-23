@@ -2,9 +2,10 @@ import axios from 'axios';
 
 const state = {
   user: null,
-  userLoggedIn: false,
+  userLoggedIn: localStorage.getItem('userIsLogginIn'),
   userLibraryTracks: null,
-  categories: null
+  categories: null,
+  userRedirectedFromSpotify: false
 };
 
 const getters = {
@@ -13,12 +14,11 @@ const getters = {
 };
 
 const actions = {
+  login() {
+    localStorage.setItem('userIsLogginIn', true);
+    window.location.href = 'https://auth-spotify-api.herokuapp.com/login';
+  },
   setTokens() {
-    // const tokenExists = JSON.parse(localStorage.getItem('tokens'));
-
-    // if (tokenExists) {
-    //   console.log('token already exists');
-    // } else {
     const access_token_Start = window.location.href.indexOf('=');
     const access_token_End = window.location.href.indexOf('&');
     const access_token = window.location.href.slice(
@@ -36,11 +36,8 @@ const actions = {
       access_token,
       refresh_token
     };
+
     localStorage.setItem('tokens', JSON.stringify(tokens));
-    // }
-  },
-  setUserLoggedIn({ commit }) {
-    commit('setUserLoggedIn_m', true);
   },
   async getAuthUser({ commit }) {
     const { access_token } = await JSON.parse(localStorage.getItem('tokens'));
@@ -93,6 +90,9 @@ const actions = {
       commit('setCategories', categories.data.categories.items);
       console.log('CATEGORIES state', state.categories);
     }
+  },
+  setSpotifyRedirect({ commit }) {
+    commit('setUserRedirectedFromSpotify', true);
   }
 };
 
@@ -100,7 +100,9 @@ const mutations = {
   setAuthUser: (state, user) => (state.user = user),
   setUserLoggedIn_m: (state, value) => (state.userLoggedIn = value),
   setUserLibraryTracks: (state, tracks) => (state.userLibraryTracks = tracks),
-  setCategories: (state, categories) => (state.categories = categories)
+  setCategories: (state, categories) => (state.categories = categories),
+  setUserRedirectedFromSpotify: (state, value) =>
+    (state.userRedirectedFromSpotify = value)
 };
 
 export default {

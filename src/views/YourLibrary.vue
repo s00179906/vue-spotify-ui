@@ -1,21 +1,24 @@
 <template>
   <div id="lib">
-    <div v-for="track in userLibraryTracks" :key="track.track.id">
+    <!-- <div v-for="track in userLibraryTracks" :key="track.track.id">
       <div v-if="track">
         <Track :track="track" />
       </div>
-    </div>
+    </div> -->
+
+    <LibraryNavbar />
   </div>
 </template>
 
 <script>
 import { mapActions, mapState, mapGetters } from 'vuex';
-import Track from '@/components/Track.vue';
+// import Track from '@/components/Track.vue';
+import LibraryNavbar from '@/components/LibraryNavbar.vue';
 
 export default {
   name: 'YourLibrary',
   components: {
-    Track
+    LibraryNavbar
   },
   props: {},
   methods: {

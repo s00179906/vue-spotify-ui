@@ -5,7 +5,7 @@
       app
       color="primaryDark"
       tile
-      :width="220"
+      :width="230"
       v-model="drawer"
     >
       <v-list>
@@ -17,7 +17,7 @@
         <v-list-item-group class="mt-5">
           <router-link to="/">
             <v-list-item dark>
-              <v-list-item-icon>
+              <v-list-item-icon class="mx-2">
                 <img src="@/assets/Spotify_home.svg" />
               </v-list-item-icon>
               <v-list-item-content>
@@ -28,7 +28,7 @@
 
           <router-link to="/search">
             <v-list-item dark>
-              <v-list-item-icon>
+              <v-list-item-icon class="mx-2">
                 <img src="@/assets/Spotify_search.svg" />
               </v-list-item-icon>
               <v-list-item-content>
@@ -38,8 +38,8 @@
           >
 
           <router-link to="/library">
-            <v-list-item dark>
-              <v-list-item-icon>
+            <v-list-item dark class="py-0">
+              <v-list-item-icon class="mx-2">
                 <img src="@/assets/Spotify_yourlibrary.svg" />
               </v-list-item-icon>
               <v-list-item-content>
@@ -73,6 +73,7 @@
 
 <script>
 import PlaylistModal from '@/components/PlaylistModal.vue';
+import { mapState } from 'vuex';
 
 export default {
   components: {
@@ -83,6 +84,9 @@ export default {
     group: null,
     dialog: false
   }),
+  computed: {
+    ...mapState(['userLoggedIn'])
+  },
 
   watch: {
     group() {

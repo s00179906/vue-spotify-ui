@@ -80,13 +80,11 @@ export default {
     Search
   },
   methods: {
-    login() {
-      window.location.href = 'https://auth-spotify-api.herokuapp.com/login';
-      localStorage.setItem('userIsLogginIn', true);
-    },
+    ...mapActions['login'],
     logout() {
-      window.location.href = 'https://auth-spotify-api.herokuapp.com/login';
       localStorage.clear();
+      window.location.href =
+        'accounts.spotify.com/en/logout?continue=https%3A%2F%2Faccounts.spotify.com%2Fauthorize%3Fscope%3Dstreaming%2520app-remote-control%2520user-read-private%2520user-library-read%2520user-read-email%2520user-read-currently-playing%2520user-modify-playback-state%2520user-read-playback-state%2520user-follow-read%2520user-follow-modify%2520user-top-read%2520user-read-recently-played%2520playlist-read-collaborative%2520playlist-modify-public%2520playlist-read-private%2520playlist-modify-private%26response_type%3Dcode%26redirect_uri%3Dhttps%3A%252F%252Fauth-spotify-api.herokuapp.com%252Fcallback%26state%3DQRcfjHAPXBFyhnVU%26client_id%3De8794524c32b40ffbffdd5db2b98d77b';
     },
     goBack() {
       this.$router.go(-1);

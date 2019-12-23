@@ -24,13 +24,15 @@ export default {
     Header
   },
   methods: {
-    ...mapActions(['setTokens', 'setUserLoggedIn'])
+    ...mapActions(['setTokens', 'login'])
   },
-  created() {
-    localStorage.setItem('userIsLogginIn', false);
+  async created() {
+    if (!this.userLoggedIn) {
+      await this.login();
+    }
+
     if (this.userLoggedIn) {
-      this.setTokens();
-      this.setUserLoggedIn();
+      await this.setTokens();
     }
   },
   data: () => {

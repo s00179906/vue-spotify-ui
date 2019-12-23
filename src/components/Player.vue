@@ -1,5 +1,11 @@
 <template>
-  <v-footer class="d-flex justify-center" color="primaryGray" fixed app>
+  <v-footer
+    height="90"
+    class="d-flex justify-center"
+    color="primaryGray"
+    fixed
+    app
+  >
     <v-row>
       <v-col class="text-center" sm="3">1</v-col>
       <v-col class="text-center" sm="6">
@@ -12,7 +18,7 @@
 </template>
 
 <script>
-  export default {};
+export default {};
 </script>
 
 <style scoped lang="scss"></style>
