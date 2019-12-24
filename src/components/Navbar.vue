@@ -37,7 +37,7 @@
             </v-list-item></router-link
           >
 
-          <router-link to="/library">
+          <router-link to="/library/playlists">
             <v-list-item dark class="py-0">
               <v-list-item-icon class="mx-2">
                 <img src="@/assets/Spotify_yourlibrary.svg" />
