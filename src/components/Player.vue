@@ -1,7 +1,7 @@
 <template>
   <v-footer
     height="90"
-    class="d-flex justify-center"
+    class="justify-center d-none d-sm-flex"
     color="primaryGray"
     fixed
     app

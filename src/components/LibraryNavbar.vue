@@ -1,5 +1,5 @@
 <template>
-  <div class="pt-10 px-5 d-flex" id="nav">
+  <div class="d-none d-sm-flex pt-10 px-5 " id="nav">
     <router-link to="/library/playlists" class="px-1">
       <v-btn text dark>
         <h5 class="text-uppercase ">Playlists</h5>
