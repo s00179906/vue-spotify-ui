@@ -34,13 +34,14 @@ export default {
       await this.login();
     }
 
-    if (this.userLoggedIn) {
+    if (this.userLoggedIn && !this.isTokenSet) {
       await this.setTokens();
     }
   },
   data: () => {
     return {
-      userLoggedIn: localStorage.getItem('userIsLogginIn')
+      userLoggedIn: localStorage.getItem('userIsLogginIn'),
+      isTokenSet: localStorage.getItem('isTokenSet')
     };
   }
 };

@@ -39,6 +39,7 @@ const actions = {
     };
 
     localStorage.setItem('tokens', JSON.stringify(tokens));
+    localStorage.setItem('isTokenSet', true);
   },
   async getAuthUser({ commit }) {
     const { access_token } = await JSON.parse(localStorage.getItem('tokens'));

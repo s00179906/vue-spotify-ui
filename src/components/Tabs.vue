@@ -15,7 +15,7 @@
       <v-icon>mdi-magnify</v-icon>
     </v-btn>
 
-    <v-btn to="/yourlibrary/playlists">
+    <v-btn to="/library/playlists">
       <span>Library</span>
       <v-icon>mdi-library-music</v-icon>
     </v-btn>

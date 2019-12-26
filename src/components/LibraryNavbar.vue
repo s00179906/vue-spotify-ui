@@ -44,7 +44,6 @@ export default {};
 
 <style scoped lang="scss">
 #nav {
-  background-color: #121212;
   font-size: 12px;
   a {
     text-decoration: none;

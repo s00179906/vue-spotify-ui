@@ -1,21 +1,15 @@
 <template>
-  <div>
+  <div id="playlists">
     <LibraryNavbar />
-    <v-app id="playlists" dark>
-      <v-row dense class="mt-5 mx-8">
+    <v-container dark class="mx-4">
+      <v-row dense class="mt-5">
         <v-col
-          class="ma-0 pa-0"
+          class="ma-2"
           v-for="(playlist, index) in userPlaylists"
           :key="index"
-          cols="3"
+          cols="2"
         >
-          <v-card
-            class="ma-0 pa-0"
-            width="200"
-            height="280"
-            dark
-            color="primaryGray"
-          >
+          <v-card width="200" height="280" dark color="primaryGray">
             <v-img
               :src="playlist.images[0].url"
               height="160"
@@ -24,17 +18,17 @@
             ></v-img>
 
             <v-card-subtitle
-              class="py-2 px-4 text-center font-weight-bold"
+              class="text-center font-weight-bold"
               id="playlist-name"
               >{{ playlist.name }}</v-card-subtitle
             >
-            <v-card-text class="px-5" id="playlist-owner-text"
+            <v-card-text class="text-truncate" id="playlist-owner-text"
               >By {{ playlist.owner.display_name }}</v-card-text
             >
           </v-card>
         </v-col>
       </v-row>
-    </v-app>
+    </v-container>
   </div>
 </template>
 
@@ -62,8 +56,13 @@ export default {
 
 <style scoped lang="scss">
 #playlists {
-  background-color: #121212;
   height: 100%;
+  background: rgb(18, 18, 18);
+  background: linear-gradient(
+    0deg,
+    rgba(18, 18, 18, 1) 61%,
+    rgba(41, 78, 50, 1) 100%
+  );
 }
 
 #playlist-name {
