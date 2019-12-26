@@ -5,7 +5,8 @@ const state = {
   userLoggedIn: localStorage.getItem('userIsLogginIn'),
   userLibraryTracks: null,
   categories: null,
-  userRedirectedFromSpotify: false
+  userRedirectedFromSpotify: false,
+  userPlaylists: []
 };
 
 const getters = {
@@ -93,6 +94,25 @@ const actions = {
   },
   setSpotifyRedirect({ commit }) {
     commit('setUserRedirectedFromSpotify', true);
+  },
+  async getUserPlaylists({ commit }) {
+    const { access_token } = await JSON.parse(localStorage.getItem('tokens'));
+
+    if (access_token) {
+      const playlists = await axios.get(
+        'https://api.spotify.com/v1/me/playlists',
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${access_token}`
+          }
+        }
+      );
+
+      commit('setUserPlaylists', playlists.data.items);
+
+      console.log('USER PLAYLISTS -->', state.userPlaylists);
+    }
   }
 };
 
@@ -102,7 +122,8 @@ const mutations = {
   setUserLibraryTracks: (state, tracks) => (state.userLibraryTracks = tracks),
   setCategories: (state, categories) => (state.categories = categories),
   setUserRedirectedFromSpotify: (state, value) =>
-    (state.userRedirectedFromSpotify = value)
+    (state.userRedirectedFromSpotify = value),
+  setUserPlaylists: (state, playlists) => (state.userPlaylists = playlists)
 };
 
 export default {
