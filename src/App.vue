@@ -5,6 +5,7 @@
       <Navbar />
       <router-view />
       <Player />
+      <Tabs />
     </v-content>
   </v-app>
 </template>
@@ -13,6 +14,7 @@
 import Navbar from '@/components/Navbar.vue';
 import Player from '@/components/Player.vue';
 import Header from '@/components/Header.vue';
+import Tabs from '@/components/Tabs.vue';
 import { mapActions } from 'vuex';
 
 export default {
@@ -21,7 +23,8 @@ export default {
   components: {
     Navbar,
     Player,
-    Header
+    Header,
+    Tabs
   },
   methods: {
     ...mapActions(['setTokens', 'login'])

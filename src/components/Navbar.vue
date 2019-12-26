@@ -1,6 +1,8 @@
 <template>
   <div>
-    <v-btn class="d-lg-none" text @click.stop="drawer = !drawer"></v-btn>
+    <!-- DRAWER BUTTON TOGGLER -->
+    <!-- <v-btn class="d-lg-none" text @click.stop="drawer = !drawer"></v-btn> -->
+
     <v-navigation-drawer
       app
       color="primaryDark"

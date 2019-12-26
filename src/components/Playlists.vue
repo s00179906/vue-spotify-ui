@@ -1,9 +1,9 @@
 <template>
   <div>
     <LibraryNavbar />
-    <v-container id="playlists" dark>
+    <v-app id="playlists" dark>
       <h1>Playlists Component</h1>
-    </v-container>
+    </v-app>
   </div>
 </template>
 

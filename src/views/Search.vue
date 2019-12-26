@@ -1,15 +1,19 @@
 <template>
-  <div id="search">
-    <h1 class="ml-5 pt-5" dark>Browse all</h1>
+  <v-app id="search" dark>
+    <h1 class="text-center">Search</h1>
     <Categories />
-  </div>
+  </v-app>
 </template>
 
 <script>
 import Categories from '@/components/Categories.vue';
+
 export default {
   components: {
     Categories
+  },
+  data: () => {
+    return {};
   }
 };
 </script>

@@ -1,8 +1,8 @@
 <template>
   <v-app-bar color="secondaryDark" dark>
-    <v-btn class="ma-2 d-md-none" fab dark small>
+    <!-- <v-btn class="ma-2 d-md-none" fab dark small>
       <v-icon dark>mdi-menu</v-icon>
-    </v-btn>
+    </v-btn> -->
 
     <v-btn @click="goBack" class="ma-2  d-none d-md-flex" fab dark small>
       <v-icon dark>mdi-chevron-left</v-icon>
