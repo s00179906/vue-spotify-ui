@@ -9,7 +9,8 @@ const state = {
   categories: null,
   userRedirectedFromSpotify: false,
   userPlaylists: [],
-  userAlbums: []
+  userAlbums: [],
+  userFollowedArtists: []
 };
 
 const getters = {
@@ -43,6 +44,24 @@ const actions = {
 
     localStorage.setItem('tokens', JSON.stringify(tokens));
     localStorage.setItem('isTokenSet', true);
+  },
+  async getRefreshToken() {
+    const { refresh_token } = JSON.parse(localStorage.getItem('tokens'));
+
+    if (refresh_token) {
+      const token = await axios.get(
+        `https://auth-spotify-api.herokuapp.com/refresh_token?refresh_token=${refresh_token}`
+      );
+
+      // console.log('REFRESHED ACCESS TOKEN -->', token.data.access_token);
+
+      const newTokens = {
+        refresh_token,
+        access_toke: token.data.access_token
+      };
+
+      localStorage.setItem('tokens', JSON.stringify(newTokens));
+    }
   },
   async getAuthUser({ commit }) {
     const { access_token } = await JSON.parse(localStorage.getItem('tokens'));
@@ -126,6 +145,24 @@ const actions = {
       });
       commit('setUserAlbums', ablums.data.items);
     }
+  },
+  async getUserFollowedArtists({ commit }) {
+    const { access_token } = await JSON.parse(localStorage.getItem('tokens'));
+
+    if (access_token) {
+      const followedArtists = await axios.get(
+        `${axios.defaults.baseURL}/me/following?type=artist`,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${access_token}`
+          }
+        }
+      );
+
+      console.log(followedArtists.data.artists.items);
+      commit('setUserFollowedArtists', followedArtists.data.artists.items);
+    }
   }
 };
 
@@ -137,7 +174,9 @@ const mutations = {
   setUserRedirectedFromSpotify: (state, value) =>
     (state.userRedirectedFromSpotify = value),
   setUserPlaylists: (state, playlists) => (state.userPlaylists = playlists),
-  setUserAlbums: (state, albums) => (state.userAlbums = albums)
+  setUserAlbums: (state, albums) => (state.userAlbums = albums),
+  setUserFollowedArtists: (state, followedArtists) =>
+    (state.userFollowedArtists = followedArtists)
 };
 
 export default {

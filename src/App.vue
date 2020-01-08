@@ -27,9 +27,12 @@ export default {
     Tabs
   },
   methods: {
-    ...mapActions(['setTokens', 'login'])
+    ...mapActions(['setTokens', 'login', 'getRefreshToken'])
   },
   async created() {
+    window.setInterval(() => {
+      this.getRefreshToken();
+    }, 1000 * 60 * 55);
     if (!this.userLoggedIn) {
       await this.login();
     }
