@@ -1,12 +1,15 @@
 import axios from 'axios';
 
+axios.defaults.baseURL = 'https://api.spotify.com/v1';
+
 const state = {
   user: null,
   userLoggedIn: localStorage.getItem('userIsLogginIn'),
   userLibraryTracks: null,
   categories: null,
   userRedirectedFromSpotify: false,
-  userPlaylists: []
+  userPlaylists: [],
+  userAlbums: []
 };
 
 const getters = {
@@ -45,7 +48,7 @@ const actions = {
     const { access_token } = await JSON.parse(localStorage.getItem('tokens'));
 
     if (access_token) {
-      const user = await axios.get('https://api.spotify.com/v1/me', {
+      const user = await axios.get(`${axios.defaults.baseURL}/me`, {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${access_token}`
@@ -62,7 +65,7 @@ const actions = {
 
     if (access_token) {
       const tracks = await axios.get(
-        'https://api.spotify.com/v1/me/tracks?limit=10',
+        `${axios.defaults.baseURL}/me/tracks?limit=10`,
         {
           headers: {
             'Content-Type': 'application/json',
@@ -79,7 +82,7 @@ const actions = {
 
     if (access_token) {
       const categories = await axios.get(
-        'https://api.spotify.com/v1/browse/categories',
+        `${axios.defaults.baseURL}/browse/categories`,
         {
           headers: {
             'Content-Type': 'application/json',
@@ -100,7 +103,7 @@ const actions = {
 
     if (access_token) {
       const playlists = await axios.get(
-        'https://api.spotify.com/v1/me/playlists',
+        `${axios.defaults.baseURL}/me/playlists`,
         {
           headers: {
             'Content-Type': 'application/json',
@@ -108,10 +111,20 @@ const actions = {
           }
         }
       );
-
       commit('setUserPlaylists', playlists.data.items);
+    }
+  },
+  async getUserAlbums({ commit }) {
+    const { access_token } = await JSON.parse(localStorage.getItem('tokens'));
 
-      console.log('USER PLAYLISTS -->', state.userPlaylists);
+    if (access_token) {
+      const ablums = await axios.get(`${axios.defaults.baseURL}/me/albums`, {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${access_token}`
+        }
+      });
+      commit('setUserAlbums', ablums.data.items);
     }
   }
 };
@@ -123,7 +136,8 @@ const mutations = {
   setCategories: (state, categories) => (state.categories = categories),
   setUserRedirectedFromSpotify: (state, value) =>
     (state.userRedirectedFromSpotify = value),
-  setUserPlaylists: (state, playlists) => (state.userPlaylists = playlists)
+  setUserPlaylists: (state, playlists) => (state.userPlaylists = playlists),
+  setUserAlbums: (state, albums) => (state.userAlbums = albums)
 };
 
 export default {
