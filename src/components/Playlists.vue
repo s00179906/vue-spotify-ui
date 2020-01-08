@@ -57,7 +57,7 @@ export default {
 <style scoped lang="scss">
 #playlists {
   height: 100%;
-  background: rgb(18, 18, 18);
+  background: var(--v-teritaryDark-base);
   background: linear-gradient(
     0deg,
     rgba(18, 18, 18, 1) 61%,

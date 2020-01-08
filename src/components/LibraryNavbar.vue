@@ -6,11 +6,11 @@
       </v-btn>
     </router-link>
 
-    <router-link to="/library/made-for-you" class="px-1">
+    <!-- <router-link to="/library/made-for-you" class="px-1">
       <v-btn text dark>
         <h5 class="text-uppercase">Made For You</h5>
       </v-btn>
-    </router-link>
+    </router-link> -->
 
     <router-link to="/library/liked-songs" class="px-1">
       <v-btn text dark>

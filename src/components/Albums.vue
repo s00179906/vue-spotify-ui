@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="albums">
     <LibraryNavbar />
     <h1>Albums Component</h1>
   </div>
@@ -14,4 +14,9 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+#albums {
+  height: 100%;
+  background: var(--v-teritaryDark-base);
+}
+</style>

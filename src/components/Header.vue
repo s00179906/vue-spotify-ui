@@ -29,7 +29,7 @@
       >LOG IN</v-btn
     >
 
-    <v-btn
+    <!-- <v-btn
       class="font-weight-bold d-none d-md-flex"
       rounded
       large
@@ -40,17 +40,20 @@
       @click="logout"
       v-if="userLoggedIn"
       >LOG OUT</v-btn
-    >
-
-    <!-- <v-btn
-      class="btn-login font-weight-bold"
+    > -->
+    <v-btn
+      class="font-weight-bold d-none d-md-flex text-truncate"
+      style="font-size:10px; text-transform: lowercase"
       rounded
-      large
-      height="35"
-      v-if="userLoggedIn"
+      dark
+      @click="logout"
+      v-if="userLoggedIn && user"
     >
-      {{ userName }}
-    </v-btn> -->
+      <v-avatar size="28px" class="mr-2 ml-0">
+        <v-img :lazy-src="user.images[0].url" alt="John" />
+      </v-avatar>
+      {{ user.display_name }}</v-btn
+    >
 
     <v-menu left bottom>
       <template v-slot:activator="{ on }">
@@ -94,9 +97,9 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['userName']),
     ...mapState({
-      userLoggedIn: state => state.spotify.userLoggedIn
+      userLoggedIn: state => state.spotify.userLoggedIn,
+      user: state => state.spotify.user
     })
   },
   created() {},
